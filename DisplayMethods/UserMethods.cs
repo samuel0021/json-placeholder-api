@@ -40,5 +40,7 @@ namespace JsonPlaceholderApi.DisplayMethods
                 Console.WriteLine(new string('-', 40));
             }
         }
+
+
     }
 }

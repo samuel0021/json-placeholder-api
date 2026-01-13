@@ -46,6 +46,32 @@ namespace JsonPlaceholderApi
 
             return posts ?? new Post();
         }
+
+        // GET /posts?userId=
+        public async Task<List<Post>> GetPostsByUserAsync(int userId)
+        {
+            var response = await _httpClient.GetAsync($"/posts?userId={userId}");
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception($"Erro ao buscar posts: {response.StatusCode}");
+
+            var posts = await response.Content.ReadFromJsonAsync<List<Post>>();
+            return posts ?? new List<Post>();
+        }
+
+        // GET /posts/{id}/comments
+        // GET /comments?postId={id}
+        public async Task<List<Comment>> GetCommentsByPostIdAsync(int id)
+        {
+            var response = await _httpClient.GetAsync($"/posts/{id}/comments");
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception($"Erro ao buscar comments: {response.StatusCode}");
+
+            var comments = await response.Content.ReadFromJsonAsync<List<Comment>>();
+            return comments ?? new List<Comment>();
+        }
+
         #endregion
 
         #region Users

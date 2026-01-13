@@ -44,7 +44,6 @@ e confirmar que o conteúdo é equivalente.[^3][^2]
     - mede o tempo da requisição;
     - tenta desserializar o JSON e trata exceções de forma centralizada.[^6]
 
-Se quiser, na próxima mensagem dá para pegar uma dessas trilhas (por exemplo, “CRUD de posts” ou “relacionamento usuários/posts/comments”) e montar as interfaces e assinaturas dos métodos já em C\# bem alinhados com o que você começou.
 <span style="display:none">[^10][^11][^12][^13][^14][^15][^16][^7][^8][^9]</span>
 
 <div align="center">⁂</div>

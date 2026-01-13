@@ -1,0 +1,83 @@
+﻿## ===============================
+## Visual Studio 2022
+## ===============================
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio workspace
+.vs/
+
+# Visual Studio Code
+.vscode/
+
+## ===============================
+## Build results
+## ===============================
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+[Ll]og/
+
+## ===============================
+## .NET
+## ===============================
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+
+## ===============================
+## Test / Coverage
+## ===============================
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+## ===============================
+## Publish
+## ===============================
+publish/
+*.Publish.xml
+
+## ===============================
+## OS files
+## ===============================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+## ===============================
+## Rider / JetBrains (caso use)
+## ===============================
+.idea/
+*.sln.iml
+
+## ===============================
+## Logs
+## ===============================
+*.log
+
+## ===============================
+## Backup / Temp
+## ===============================
+*.tmp
+*.bak
+*.old
+*.orig

@@ -1,4 +1,5 @@
-﻿using JsonPlaceholderApi.Models;
+﻿using JsonPlaceholderApi.DTO;
+using JsonPlaceholderApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,6 +88,51 @@ namespace JsonPlaceholderApi
 
             return users ?? new List<User>();
         }
+        #endregion
+
+        #region CRUD
+
+        // POST /posts
+        public async Task<Post?> CreatePostAsync(PostCreateDto dto)
+        {
+            var response = await _httpClient.PostAsJsonAsync("/posts", dto);
+
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadFromJsonAsync<Post>();
+        }
+
+        // PUT /posts/{id}
+        public async Task<Post?> UpdatePutPostAsync(int id, PostUpdateDto dto)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"/posts/{id}", dto);
+
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadFromJsonAsync<Post>();
+        }
+
+        //  PATCH /posts/{id}
+        public async Task<Post?> UpdatePatchPostAsync(int id, PostUpdateDto dto)
+        {
+            var response = await _httpClient.PatchAsJsonAsync($"/posts/{id}", dto);
+
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadFromJsonAsync<Post?>();
+        }
+
+        // DELETE /posts/{id}
+        public async Task DeletePostAsync(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"/posts/{id}");
+
+            if(!response.IsSuccessStatusCode)
+                Console.WriteLine($"Erro ao deletar: {response.Content}");
+                
+            Console.WriteLine("Deletado com sucesso");
+        }
+
         #endregion
     }
 }

@@ -87,15 +87,21 @@ namespace JsonPlaceholderApi
             var post = await apiClient.GetPostById(10);
 
             string oldTitle = post.Title;
+            Console.WriteLine($"Old UserId: {post.UserId}");
             Console.WriteLine($"Old title: {oldTitle}");
+            Console.WriteLine($"Old Body: {post.Body}\n");
 
             var dto = new PostUpdateDto
-            {                
-                Title = "Test123"                
+            {         
+                UserId = 2,
+                Title = "Test123",
+                Body = "jdçsifhaçidfh"
             };
 
             var patchPost = await apiClient.UpdatePatchPostAsync(10, dto);
+            Console.WriteLine($"New UserId: {patchPost.UserId}");
             Console.WriteLine($"New title: {patchPost.Title}");
+            Console.WriteLine($"New Body: {patchPost.Body}\n");
 
             await apiClient.DeletePostAsync(10);
 

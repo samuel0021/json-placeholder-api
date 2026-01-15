@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace JsonPlaceholderApi
@@ -20,6 +22,11 @@ namespace JsonPlaceholderApi
                 BaseAddress = new Uri(baseUrl)
             };
         }
+
+        private readonly JsonSerializerOptions _jsonOptions = new()
+        {
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+        };
 
         #region Posts
         // GET /posts
@@ -115,11 +122,11 @@ namespace JsonPlaceholderApi
         //  PATCH /posts/{id}
         public async Task<Post?> UpdatePatchPostAsync(int id, PostUpdateDto dto)
         {
-            var response = await _httpClient.PatchAsJsonAsync($"/posts/{id}", dto);
+            var response = await _httpClient.PatchAsJsonAsync($"/posts/{id}", dto, _jsonOptions);
 
             response.EnsureSuccessStatusCode();
 
-            return await response.Content.ReadFromJsonAsync<Post?>();
+            return await response.Content.ReadFromJsonAsync<Post>();
         }
 
         // DELETE /posts/{id}
